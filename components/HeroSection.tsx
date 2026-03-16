@@ -4,7 +4,6 @@ import React from "react"
 import { HeroHeader } from "./header"
 import { AnimatedGroup } from "./ui/animated-group"
 import { TextEffect } from "./ui/text-effect"
-import { main } from "motion/react-client"
 
 // ─── Animation variants ──────────────────────────────────────────────────────
 const fadeUp = {
@@ -24,9 +23,6 @@ const stagger = (delay = 0.2) => ({
   item: fadeUp,
 })
 
-// ─── Hexagonal clip path ─────────────────────────────────────────────────────
-const HEX_CLIP = "polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)"
-
 // ─── Ticker skills ───────────────────────────────────────────────────────────
 const SKILLS = [
   "UI/UX Design",
@@ -43,80 +39,6 @@ const Sparkle = ({ size = 16 }: { size?: number }) => (
       d="M8 0L9.796 6.204L16 8L9.796 9.796L8 16L6.204 9.796L0 8L6.204 6.204L8 0Z"
       fill="#9D86FF"
     />
-  </svg>
-)
-
-// ─── Hexagonal ring SVG ───────────────────────────────────────────────────────
-const HexRing = () => (
-  <svg
-    viewBox="0 0 500 500"
-    fill="none"
-    className="pointer-events-none absolute inset-0 h-full w-full select-none"
-    style={{ filter: "drop-shadow(0 0 35px rgba(125,82,253,0.45))" }}
-    aria-hidden
-  >
-    {/* Outer hex */}
-    <polygon
-      points="250,16 470,135 470,365 250,484 30,365 30,135"
-      stroke="url(#hg1)"
-      strokeWidth="1.5"
-      fill="none"
-    />
-    {/* Middle hex dashed */}
-    <polygon
-      points="250,50 440,155 440,345 250,450 60,345 60,155"
-      stroke="url(#hg2)"
-      strokeWidth="0.75"
-      strokeDasharray="7 6"
-      fill="none"
-      opacity="0.45"
-    />
-    {/* Inner hex subtle */}
-    <polygon
-      points="250,84 410,175 410,325 250,416 90,325 90,175"
-      stroke="#7D52FD"
-      strokeWidth="0.5"
-      fill="none"
-      opacity="0.2"
-    />
-    {/* Corner glow dots */}
-    {(
-      [
-        [250, 16],
-        [470, 135],
-        [470, 365],
-        [250, 484],
-        [30, 365],
-        [30, 135],
-      ] as [number, number][]
-    ).map(([cx, cy], i) => (
-      <circle key={i} cx={cx} cy={cy} r="4.5" fill="#9D86FF" opacity="0.85" />
-    ))}
-    <defs>
-      <linearGradient
-        id="hg1"
-        x1="0"
-        y1="0"
-        x2="500"
-        y2="500"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#9D86FF" />
-        <stop offset="0.5" stopColor="#7D52FD" />
-        <stop offset="1" stopColor="#7D52FD" stopOpacity="0.05" />
-      </linearGradient>
-      <linearGradient
-        id="hg2"
-        x1="500"
-        y1="0"
-        x2="0"
-        y2="500"
-        gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor="#9D86FF" stopOpacity="0.65" />
-        <stop offset="1" stopColor="#7D52FD" stopOpacity="0" />
-      </linearGradient>
-    </defs>
   </svg>
 )
 
@@ -222,6 +144,7 @@ export default function HeroSection() {
             HERO
         ═══════════════════════════════════════════════════════════════════ */}
         <section
+          id="home"
           className="relative z-10 mx-auto"
           style={{ maxWidth: 1380, padding: "0 60px" }}
         >
@@ -450,8 +373,10 @@ export default function HeroSection() {
                     width="100"
                     height="110"
                     preserveAspectRatio="xMidYMid slice"
-                    className="mix-blend-luminosity transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:mix-blend-normal"
+                    className="mix-blend-soft-light transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:mix-blend-normal"
                     style={{ transformOrigin: "center" }}
+                    aria-label="Ubaid - UI/UX Designer and Web Developer"
+                    role="img"
                   />
 
                   {/* ৫. Bottom Overlay Fade */}
@@ -470,7 +395,7 @@ export default function HeroSection() {
               </svg>
 
               {/* ৭. Rotating Badge & Button — পারফেক্টলি এলাইনড */}
-              <div className="absolute bottom-12 left-1/2 z-20 h-[110px] w-[110px] -translate-x-1/2">
+              <div className="absolute bottom-5 left-1/2 z-20 h-15 w-15 -translate-x-1/2 md:bottom-10 md:h-25 md:w-25">
                 {/* রোটেশনাল টেক্সট এবং বাইরের বর্ডার */}
                 <svg
                   viewBox="0 0 100 100"
@@ -515,7 +440,7 @@ export default function HeroSection() {
 
                 {/* সেন্টারের ভায়োলেট বাটন - সাইজ ও আইকন এলাইনমেন্ট */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <button className="group/btn flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-[#9b88d4] text-white shadow-[0_4px_20px_rgba(125,82,253,0.5)] transition-all duration-300 hover:scale-110 hover:bg-[#7D52FD]">
+                  <button className="group/btn flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-[#9b88d4] text-white shadow-[0_4px_20px_rgba(125,82,253,0.5)] transition-all duration-300 hover:scale-110 hover:bg-[#7D52FD] md:h-16 md:w-16">
                     <svg
                       width="26"
                       height="26"
