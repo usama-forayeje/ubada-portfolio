@@ -27,104 +27,143 @@ function useInView(threshold = 0.1) {
 
 const TOOLS = [
   {
-    // Figma — #1 UI/UX design tool
+    // Figma — exact 5-node logo shape
     name: "Figma",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <rect x="7"  y="2"  width="5" height="5" rx="2.5" fill="#F24E1E"/>
-        <rect x="12" y="2"  width="5" height="5" rx="2.5" fill="#FF7262"/>
-        <rect x="7"  y="7"  width="5" height="5" rx="2.5" fill="#A259FF"/>
-        <rect x="7"  y="12" width="5" height="5" rx="2.5" fill="#0ACF83"/>
-        <circle cx="14.5" cy="14.5" r="2.5" fill="#1ABCFE"/>
+      <svg viewBox="0 0 38 56" fill="none" className="w-6 h-6">
+        <rect x="0"  y="0"  width="19" height="19" rx="9.5" fill="#F24E1E"/>
+        <rect x="19" y="0"  width="19" height="19" rx="9.5" fill="#FF7262"/>
+        <rect x="0"  y="19" width="19" height="19" rx="9.5" fill="#A259FF"/>
+        <rect x="0"  y="38" width="19" height="18" rx="9"   fill="#0ACF83"/>
+        {/* <circle cx="28.5" cy="47" r="9.5" fill="#1ABCFE"/> */}
+        <circle cx="28.5" cy="28.5" r="9.5" fill="#0D99FF"/>
       </svg>
     ),
   },
   {
-    // Framer — top no-code UI tool with AI features
+    // Framer — exact F chevron shape
     name: "Framer",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <path d="M5 3h14v7.5H12L5 3z"  fill="#0099FF"/>
-        <path d="M5 10.5h7l7 10.5H5v-10.5z" fill="#0066CC"/>
-        <line x1="12" y1="10.5" x2="12" y2="21" stroke="#66CCFF" strokeWidth="1.2"/>
+      <svg viewBox="0 0 24 36" fill="none" className="w-6 h-6">
+        <path d="M0 0h24v12H12L0 0z"   fill="white"/>
+        <path d="M0 12h12l12 12H0V12z" fill="white" opacity="0.6"/>
+        <path d="M0 24h12v12L0 24z"    fill="white" opacity="0.35"/>
       </svg>
     ),
   },
   {
-    // Spline — 3D design tool, trending for UI/UX
+    // Adobe XD — exact square with cutout corners
+    name: "Adobe XD",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#FF2BC2"/>
+        <path d="M10 7.5L6.5 16.5M10 7.5L13.5 16.5M8 13h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+        <path d="M15 9.5c1.5 0 2.5 1.3 2.5 3.5S16.5 16.5 15 16.5s-2.5-1.3-2.5-3.5 1-3.5 2.5-3.5z" stroke="white" strokeWidth="1.5"/>
+      </svg>
+    ),
+  },
+  {
+    // Spline — exact globe/orbit shape
     name: "Spline",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <circle cx="12" cy="12" r="9" stroke="#0AFFE5" strokeWidth="1.5"/>
-        <ellipse cx="12" cy="12" rx="9" ry="3.5" stroke="#0AFFE5" strokeWidth="1" opacity="0.5"/>
-        <ellipse cx="12" cy="12" rx="3.5" ry="9" stroke="#0AFFE5" strokeWidth="1" opacity="0.5"/>
+        <circle cx="12" cy="12" r="9.5" stroke="#0AFFE5" strokeWidth="1.5"/>
+        <ellipse cx="12" cy="12" rx="9.5" ry="3.8" stroke="#0AFFE5" strokeWidth="1" opacity="0.55"/>
+        <ellipse cx="12" cy="12" rx="3.8" ry="9.5" stroke="#0AFFE5" strokeWidth="1" opacity="0.55"/>
         <circle cx="12" cy="12" r="2.5" fill="#0AFFE5"/>
       </svg>
     ),
   },
   {
-    // Webflow — visual dev & CMS powerhouse
+    // Webflow — exact W lettermark
     name: "Webflow",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <path d="M3 7.5l3.5 9L9 12l2.5 4.5L15 7.5h1.5L12 19l-2.5-4.5L7 19 3 7.5z" fill="#4353FF"/>
-        <path d="M15.5 7.5c0 0 2 5.5 2.5 7 .5-1.5 2.5-7 2.5-7h-5z" fill="#4353FF"/>
+        {/* W shape: 5 points, 2 valleys */}
+        <path
+          d="M2 7.5L5.5 17 8 11.5 10.5 17 14 7.5"
+          stroke="#4353FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"
+        />
+        {/* Right arm of W */}
+        <path
+          d="M14 7.5L16.2 14.5 18.5 7.5 22 7.5"
+          stroke="#4353FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"
+        />
       </svg>
     ),
   },
   {
-    // Lottie / After Effects — motion design & micro-animations
+    // After Effects — exact Ae square
     name: "After FX",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <rect x="2" y="2" width="20" height="20" rx="5" fill="#00005B"/>
-        <text x="4.5" y="16.5" fontSize="9.5" fill="#9999FF" fontWeight="900"
-          fontFamily="Arial,sans-serif">Ae</text>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#00005B"/>
+        <text x="3.5" y="17" fontSize="11" fill="#9999FF" fontWeight="900" fontFamily="Arial,sans-serif">Ae</text>
       </svg>
     ),
   },
   {
-    // Notion — design docs, system docs, PM tool
-    name: "Notion",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <rect x="3" y="2" width="18" height="20" rx="3" fill="#fff" opacity="0.9"/>
-        <path d="M7 7h6M7 11h8M7 15h5" stroke="#000" strokeWidth="1.5" strokeLinecap="round"/>
-        <circle cx="17" cy="15" r="2" fill="#000" opacity="0.15"/>
-      </svg>
-    ),
-  },
-  {
-    // Lottie Files — animation workflow tool
+    // Lottie Files — exact play-button-in-circle
     name: "Lottie",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <circle cx="12" cy="12" r="10" fill="#0BCEAF" opacity="0.15"/>
-        <circle cx="12" cy="12" r="10" stroke="#0BCEAF" strokeWidth="1.5"/>
-        <path d="M8 9l8 3-8 3V9z" fill="#0BCEAF"/>
+        <circle cx="12" cy="12" r="10.5" stroke="#0BCEAF" strokeWidth="1.5" fill="rgba(11,206,175,0.1)"/>
+        {/* Play triangle — exact centered */}
+        <path d="M9.5 8.5L16.5 12L9.5 15.5V8.5Z" fill="#0BCEAF"/>
       </svg>
     ),
   },
   {
-    // Protopie — advanced interactive prototyping
+    // ProtoPie — exact concentric circles
     name: "ProtoPie",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <circle cx="12" cy="12" r="10" fill="#FF3C6F" opacity="0.15"/>
-        <circle cx="12" cy="12" r="10" stroke="#FF3C6F" strokeWidth="1.5"/>
-        <circle cx="12" cy="12" r="5" fill="#FF3C6F" opacity="0.4"/>
-        <circle cx="12" cy="12" r="2" fill="#FF3C6F"/>
+        <circle cx="12" cy="12" r="10.5" stroke="#FF3C6F" strokeWidth="1.5" fill="rgba(255,60,111,0.08)"/>
+        <circle cx="12" cy="12" r="6"    stroke="#FF3C6F" strokeWidth="1.5" fill="rgba(255,60,111,0.15)"/>
+        <circle cx="12" cy="12" r="2.5"  fill="#FF3C6F"/>
       </svg>
     ),
   },
   {
-    // Illustrator — vector graphics & branding
+    // Illustrator — exact Ai square
     name: "Illustrator",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-        <rect x="2" y="2" width="20" height="20" rx="4" fill="#300000"/>
-        <text x="4" y="17" fontSize="10" fill="#FF9A00" fontWeight="900"
-          fontFamily="Arial,sans-serif">Ai</text>
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#2E001A"/>
+        <text x="3" y="17.5" fontSize="11" fill="#FF9A00" fontWeight="900" fontFamily="Arial,sans-serif">Ai</text>
+      </svg>
+    ),
+  },
+  {
+    // Photoshop — exact Ps square
+    name: "Photoshop",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+        <rect x="1" y="1" width="22" height="22" rx="5" fill="#001E36"/>
+        <text x="3" y="17.5" fontSize="11" fill="#31A8FF" fontWeight="900" fontFamily="Arial,sans-serif">Ps</text>
+      </svg>
+    ),
+  },
+  {
+    // Principle — motion prototyping for Mac
+    name: "Principle",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+        <circle cx="12" cy="12" r="10.5" fill="#F5A623" opacity="0.15" stroke="#F5A623" strokeWidth="1.5"/>
+        {/* Forward arrow — motion/animation symbol */}
+        <path d="M8 8.5L15.5 12 8 15.5V8.5Z" fill="#F5A623"/>
+        <path d="M16 8.5v7" stroke="#F5A623" strokeWidth="1.8" strokeLinecap="round"/>
+      </svg>
+    ),
+  },
+  {
+    // Maze — user research & testing tool
+    name: "Maze",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
+        <rect x="1" y="1" width="22" height="22" rx="6" fill="#FF4F00" opacity="0.15" stroke="#FF4F00" strokeWidth="1.5"/>
+        {/* Maze M letterform */}
+        <path d="M5.5 17V7l3.5 5 3.5-5v10M15.5 7v10" stroke="#FF4F00" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
       </svg>
     ),
   },

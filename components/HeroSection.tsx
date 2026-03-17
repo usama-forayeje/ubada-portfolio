@@ -373,7 +373,7 @@ export default function HeroSection() {
                     width="100"
                     height="110"
                     preserveAspectRatio="xMidYMid slice"
-                    className="mix-blend-soft-light transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:mix-blend-normal"
+                    className="transition-all duration-700 ease-in-out group-hover:scale-105 "
                     style={{ transformOrigin: "center" }}
                     aria-label="Ubaid - UI/UX Designer and Web Developer"
                     role="img"

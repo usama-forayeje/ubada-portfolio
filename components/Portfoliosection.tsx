@@ -1,6 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 
 // ── useInView ─────────────────────────────────────────────────────────────────
 function useInView(threshold = 0.08) {
@@ -23,79 +24,118 @@ function useInView(threshold = 0.08) {
 const FILTERS = ["All", "UI/UX Design", "Development", "Marketing"] as const
 type Filter   = (typeof FILTERS)[number]
 
+// ── Project Type ──────────────────────────────────────────────────────────────
+interface Project {
+  id: number
+  cat: "UI/UX Design" | "Development" | "Marketing"
+  title: string
+  desc: string
+  img: string
+  grad: string
+  col: string
+  row: string
+  mh: string
+  showDesc: boolean
+  link?: string // Figma or live project link
+}
+
 // ── Projects ──────────────────────────────────────────────────────────────────
-const PROJECTS = [
+// To add your project screenshots:
+// 1. Save your Figma designs as PNG/JPG images
+// 2. Put them in the public/projects/ folder
+// 3. Update the 'img' path below (e.g., "/projects/project-1.jpg")
+// 4. Add your Figma link in the 'link' field
+const PROJECTS: Project[] = [
   {
-    id: 1, cat: "UI/UX Design",
-    title: "Luxury Fashion E-Commerce",
+    id: 1, 
+    cat: "UI/UX Design",
+    title: "Luxury Fashion E-Commerce", 
     desc:  "Editorial layouts, micro-interactions, and immersive product storytelling for a high-end fashion brand.",
-    img:   "/projects/project-1.jpg",
+    img:   "/projects/project-1.jpg", // Replace with your screenshot
     grad:  "linear-gradient(135deg,#9b88d4 0%,#3d1a6e 60%,#0d0a1a 100%)",
-    // bento size classes — desktop
-    col: "lg:col-span-7", row: "lg:row-span-6",
-    // mobile height
+    col: "lg:col-span-7", 
+    row: "lg:row-span-6",
     mh: "h-[320px]",
     showDesc: true,
+    link: "https://www.figma.com/proto/rLH8Nt6ALDz2Qm7fg0Sgc7/Headphone-Website?node-id=309-573&t=XN28nT3zAw5hT70q-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
   },
   {
-    id: 2, cat: "Development",
-    title: "Wildlife Conservation Dashboard",
+    id: 2, 
+    cat: "Development",
+    title: "Wildlife Conservation Dashboard", 
     desc:  "Real-time analytics, interactive maps and species tracking for a global NGO.",
-    img:   "/projects/project-2.jpg",
+    img:   "/projects/project-2.jpg", // Replace with your screenshot
     grad:  "linear-gradient(160deg,#2d6a4f 0%,#1a3d2b 50%,#0d0a1a 100%)",
-    col: "lg:col-span-5", row: "lg:row-span-6",
+    col: "lg:col-span-5", 
+    row: "lg:row-span-6",
     mh: "h-[280px]",
     showDesc: true,
+    link: "https://www.figma.com/design/rLH8Nt6ALDz2Qm7fg0Sgc7/Headphone-Website?node-id=2-22&t=qHSaazvEk5GeMkKI-1",
   },
   {
-    id: 3, cat: "UI/UX Design",
-    title: "Mobile Banking App Redesign",
+    id: 3, 
+    cat: "UI/UX Design",
+    title: "Mobile Banking App Redesign", 
     desc:  "Clean, accessible fintech UX with gesture-first navigation and dark-mode system.",
-    img:   "/projects/project-3.jpg",
+    img:   "/projects/project-3.jpg", // Replace with your screenshot
     grad:  "linear-gradient(135deg,#7D52FD 0%,#3d1a6e 50%,#0d0a1a 100%)",
-    col: "lg:col-span-7", row: "lg:row-span-4",
+    col: "lg:col-span-7", 
+    row: "lg:row-span-4",
     mh: "h-[240px]",
     showDesc: false,
+    link: "https://www.figma.com/design/70BVeunACMgiENkcX4ni0O/Website-Design?node-id=87-32&t=OFu0vzczF2BiNsSX-1",
   },
   {
-    id: 4, cat: "Marketing",
-    title: "Campaign Landing Page",
+    id: 4, 
+    cat: "Marketing",
+    title: "Campaign Landing Page", 
     desc:  "Scroll-driven storytelling with animated sections and conversion-focused copy.",
-    img:   "/projects/project-4.jpg",
+    img:   "/projects/project-4.jpg", // Replace with your screenshot
     grad:  "linear-gradient(135deg,#5a3fa8 0%,#0d0a1a 100%)",
-    col: "lg:col-span-5", row: "lg:row-span-4",
+    col: "lg:col-span-5", 
+    row: "lg:row-span-4",
     mh: "h-[240px]",
     showDesc: false,
+    link: "https://www.figma.com/proto/70BVeunACMgiENkcX4ni0O/Website-Design?node-id=87-32&t=hdvF4Hc9ku668x9h-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1",
   },
   {
-    id: 5, cat: "UI/UX Design",
-    title: "SaaS Analytics Dashboard",
+    id: 5, 
+    cat: "UI/UX Design",
+    title: "SaaS Analytics Dashboard", 
     desc:  "Data-dense UI with clean hierarchy, dark theme, and real-time chart components.",
-    img:   "/projects/project-5.jpg",
+    img:   "/projects/project-5.jpg", // Replace with your screenshot
     grad:  "linear-gradient(135deg,#1a1235 0%,#7D52FD 100%)",
-    col: "lg:col-span-4", row: "lg:row-span-4",
+    col: "lg:col-span-4", 
+    row: "lg:row-span-4",
     mh: "h-[220px]",
     showDesc: false,
+    link: "https://www.figma.com/proto/kJYlACgRSFzVImnp9emOub/Untitled?node-id=66-2&t=uQb7mZGaFbcgVwKB-1&scaling=scale-down&content-scaling=responsive&page-id=0%3A1&starting-point-node-id=69%3A357",
   },
   {
-    id: 6, cat: "Development",
-    title: "Portfolio Website Build",
+    id: 6, 
+    cat: "Development",
+    title: "Portfolio Website Build", 
     desc:  "Next.js + Tailwind portfolio with fluid animations and perfect Lighthouse scores.",
-    img:   "/projects/project-6.jpg",
+    img:   "/projects/project-6.jpg", // Replace with your screenshot
     grad:  "linear-gradient(135deg,#3d1a6e 0%,#0d0a1a 100%)",
-    col: "lg:col-span-4", row: "lg:row-span-4",
+    col: "lg:col-span-4", 
+    row: "lg:row-span-4",
     mh: "h-[220px]",
     showDesc: false,
+    link: "https://www.figma.com/proto/SuA8xAwsDKHmFW7V95bJWX/Untitled?node-id=214-600&t=1a7cfmOEB2Y62ZRp-1&scaling=scale-down-width&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=236%3A348&show-proto-sidebar=1",
   },
   {
-    id: 7, cat: "Marketing",
-    title: "Brand Identity System",
+    id: 7, 
+    cat: "Marketing",
+    title: "Brand Identity System", 
     desc:  "Full visual identity — logo, typography, colour tokens, and brand guidelines.",
-    img:   "/projects/project-7.jpg",
+    img:   "/projects/project-7.jpg", // Replace with your screenshot
     grad:  "linear-gradient(135deg,#0d2137 0%,#1a4a7a 100%)",
-    col: "lg:col-span-4", row: "lg:row-span-4",
+    col: "lg:col-span-4", 
+    row: "lg:row-span-4",
     mh: "h-[220px]",
     showDesc: false,
+    link: "",
   },
 ]
 
@@ -111,12 +151,20 @@ const ArrowIcon = ({ color = "currentColor", size = 14 }: { color?: string; size
 function BentoCard({
   project, index, visible, dimmed,
 }: {
-  project: (typeof PROJECTS)[0]
+  project: Project
   index:   number
   visible: boolean
   dimmed:  boolean
 }) {
   const [hovered, setHovered] = useState(false)
+  const [imgError, setImgError] = useState(false)
+
+  // Handle click to open project link
+  const handleClick = () => {
+    if (project.link) {
+      window.open(project.link, '_blank', 'noopener,noreferrer')
+    }
+  }
 
   return (
     <div
@@ -144,25 +192,29 @@ function BentoCard({
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={handleClick}
     >
       {/* Background gradient / image */}
       <div
         className="absolute inset-0 transition-transform duration-700 ease-out"
         style={{
-          background: project.grad,
+          background: imgError ? project.grad : undefined,
           transform: hovered ? "scale(1.06)" : "scale(1)",
         }}
-      />
-
-      {/* Real image — uncomment when ready */}
-      {/*
-      <img
-        src={project.img}
-        alt={project.title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
-        style={{ transform: hovered ? "scale(1.06)" : "scale(1)" }}
-      />
-      */}
+      >
+        {/* Project image - shows over gradient when loaded */}
+        {!imgError && (
+          <Image
+            src={project.img}
+            alt={project.title}
+            fill
+            className="object-cover transition-transform duration-700"
+            style={{ transform: hovered ? "scale(1.06)" : "scale(1)" }}
+            onError={() => setImgError(true)}
+            unoptimized={project.img.startsWith('http')}
+          />
+        )}
+      </div>
 
       {/* Violet tint overlay on hover */}
       <div
