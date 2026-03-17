@@ -87,7 +87,7 @@ export default function FooterSection() {
 
           {/* Instagram */}
           <Link
-            href="https://instagram.com/ubaid"
+            href="https://www.instagram.com/ubadaforayaje?igsh=MWk0NThiZGZtZWJ1eg=="
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
